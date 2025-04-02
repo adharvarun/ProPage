@@ -4,7 +4,7 @@
 
 <h2>🚀 Demo</h2>
 
-<p><a href="https://adharvarun.github.io/ProPage">adharvarun.github.io/Project-Page-Template</a></p>
+<p><a href="https://adharvarun.github.io/ProPage">adharvarun.github.io/ProPage</a></p>
 
 <h2>🛠️ Installation Steps</h2>
 
