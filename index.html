@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Name</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tippy.js@6/dist/tippy.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Montserrat", serif;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        body.dark-mode {
+            background-color: #1a202c;
+            color: white;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 2rem;
+            max-width: 90%;
+            margin: 1rem auto;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            transition: background-color 0.5s;
+        }
+
+        body.dark-mode .nav-bar {
+            background-color: #2d3748;
+        }
+
+        .icon-bar {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            transition: transform 0.2s, color 0.2s;
+            color: #4a5568;
+        }
+
+        .nav-icon:hover {
+            transform: scale(1.1);
+            color: #2b6cb0;
+        }
+
+        .project-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 20px;
+            object-fit: cover;
+            transition: transform 0.5s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background-color: #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            transition: background-color 0.3s;
+        }
+
+        body.dark-mode .tech-tag {
+            background-color: #4a5568;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background-color: #2b6cb0;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            background-color: #2c5282;
+        }
+
+        @media (max-width: 768px) {
+            .nav-bar {
+                display: none;
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const darkModeButton = document.getElementById('dark-mode-button');
+            if (document.body.classList.contains('dark-mode')) {
+                darkModeButton.classList.remove('fa-sun');
+                darkModeButton.classList.add('fa-moon');
+            } else {
+                darkModeButton.classList.remove('fa-moon');
+                darkModeButton.classList.add('fa-sun');
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const icons = document.querySelectorAll('.nav-icon[data-tooltip]');
+            icons.forEach(icon => {
+                const tooltipText = icon.getAttribute('data-tooltip');
+                icon.setAttribute('data-tooltip', tooltipText);
+            });
+
+            tippy('.nav-icon[data-tooltip]', {
+                content(reference) {
+                    return reference.getAttribute('data-tooltip');
+                },
+                placement: 'bottom',
+                arrow: true,
+                theme: 'light',
+            });
+        });
+    </script>
+</head>
+<body class="font-montserrat bg-gray-50">
+    <nav class="nav-bar">
+        <div class="icon-bar">
+            <img src="project-logo.png" alt="Project Logo" class="h-8 w-auto">
+        </div>
+        <div class="icon-bar">
+            <i id="dark-mode-button" class="fas fa-sun nav-icon" data-tooltip="Theme Switch" onclick="toggleDarkMode()"></i>
+        </div>
+    </nav>
+
+    <header class="project-header">
+        <h1 class="text-4xl font-bold">Project Name</h1>
+        <img src="project-image.jpg" alt="Project Screenshot" class="project-image">
+        <div class="tech-stack">
+            <span class="tech-tag"><i class="fab fa-python mr-2"></i>Technology 1</span>
+            <span class="tech-tag"><i class="fab fa-python mr-2"></i>Technology 2</span>
+            <span class="tech-tag"><i class="fab fa-python mr-2"></i>Technology 3</span>
+            <span class="tech-tag"><i class="fab fa-python mr-2"></i>Technology 4</span>
+        </div>
+        <div class="project-links">
+            <a href="#" class="project-link">
+                <i class="fab fa-github"></i>
+                View on GitHub
+            </a>
+            <a href="#" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+                Live Demo
+            </a>
+        </div>
+    </header>
+
+    <main class="project-content">
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Overview</h2>
+            <p class="mb-4">
+                A brief description of the project and its main purpose. Explain what problem it solves and why it's unique.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Features</h2>
+            <ul class="list-disc list-inside space-y-2">
+                <li>Feature 1 description</li>
+                <li>Feature 2 description</li>
+                <li>Feature 3 description</li>
+            </ul>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Technical Details</h2>
+            <p class="mb-4">
+                Detailed explanation of the technical implementation, architecture, and key components of the project.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Challenges & Solutions</h2>
+            <p class="mb-4">
+                Description of major challenges faced during development and how they were overcome.
+            </p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Future Improvements</h2>
+            <ul class="list-disc list-inside space-y-2">
+                <li>Planned improvement 1</li>
+                <li>Planned improvement 2</li>
+                <li>Planned improvement 3</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="text-center py-4">
+        <p>Developed by Name</p>
+    </footer>
+</body>
+</html>
